@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navkar Restaurant | Smart Self Ordering</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero" id="home">
+      <nav class="navbar container">
+        <h1>Navkar</h1>
+        <div class="nav-links">
+          <a href="#menu">Menu</a>
+          <a href="#features">Features</a>
+          <a href="#roles">Panels</a>
+          <a href="#firebase">Firebase</a>
+        </div>
+      </nav>
+      <div class="hero-content container">
+        <p class="badge">QR Powered Smart Dining</p>
+        <h2>Fast, contactless ordering for every table.</h2>
+        <p>
+          Customers scan table QR codes, place orders, call waiters, track status, and
+          pay with UPI/card/cash. Staff and admins manage everything in real time.
+        </p>
+        <div class="preview-card" aria-live="polite">
+          <p><strong>Live preview:</strong> <span id="preview-url">-</span></p>
+          <p>
+            <strong>Detected table:</strong>
+            <span id="table-number">Not provided</span>
+          </p>
+          <p class="preview-hint">
+            Try QR simulation: <a href="?table=5">?table=5</a>
+          </p>
+        </div>
+        <a class="btn" href="#menu">Order Now</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="section container" id="menu">
+        <h3>Menu Categories</h3>
+        <div class="grid cards-5">
+          <article class="card"><h4>Starters</h4><p>Crispy, spicy, and shareable.</p></article>
+          <article class="card"><h4>Main Course</h4><p>Punjabi, Gujarati, and more.</p></article>
+          <article class="card"><h4>Fast Food</h4><p>Quick bites for all ages.</p></article>
+          <article class="card"><h4>Drinks</h4><p>Mocktails, shakes, and sodas.</p></article>
+          <article class="card"><h4>Desserts</h4><p>Sweet endings and fusion treats.</p></article>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="features">
+        <div class="container">
+          <h3>Smart Features</h3>
+          <div class="grid cards-3">
+            <article class="card">
+              <h4>Call Waiter</h4>
+              <p>Customers tap a button and waiters get instant table alerts.</p>
+            </article>
+            <article class="card">
+              <h4>Kitchen Display</h4>
+              <p>Live order queue with table number, items, and elapsed prep time.</p>
+            </article>
+            <article class="card">
+              <h4>Loyalty + Reviews</h4>
+              <p>Earn points per order and rate dishes after serving.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section container" id="roles">
+        <h3>User Panels</h3>
+        <div class="tabs" role="tablist">
+          <button class="tab active" data-panel="customer">Customer</button>
+          <button class="tab" data-panel="waiter">Waiter</button>
+          <button class="tab" data-panel="admin">Admin</button>
+        </div>
+
+        <article class="panel active" id="customer">
+          <ul>
+            <li>Browse menu, customize quantities, and place table-linked orders.</li>
+            <li>Track status: received → preparing → ready → served.</li>
+            <li>Pay online or at counter and submit ratings.</li>
+          </ul>
+        </article>
+        <article class="panel" id="waiter">
+          <ul>
+            <li>Accept/reject incoming orders and update status in real time.</li>
+            <li>Handle table requests and service notifications.</li>
+            <li>Coordinate with kitchen and mark served orders.</li>
+          </ul>
+        </article>
+        <article class="panel" id="admin">
+          <ul>
+            <li>Manage menu, categories, staff, tables, and availability.</li>
+            <li>Monitor live operations: active tables, order flow, and revenue.</li>
+            <li>Generate reports: daily/weekly sales, top dishes, table activity.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="section section-alt" id="firebase">
+        <div class="container">
+          <h3>Firebase Data Model</h3>
+          <pre>
+users/{userId}: { name, role }
+menu/{itemId}: { name, price, category, image, available }
+orders/{orderId}: { tableNumber, items, total, status, timestamp }
+tables/{tableId}: { status }
+          </pre>
+          <p class="note">
+            Recommended security: only admins edit menu, waiters update order status,
+            customers create orders.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>Theme: #FF6B00 / #1F1F1F • Font: Poppins • Mobile-first responsive layout</p>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
